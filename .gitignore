@@ -1,0 +1,57 @@
+# Sistemas operacionais
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+.project
+.classpath
+.settings/
+nbproject/private/
+
+# Java e Gradle
+.gradle/
+build/
+**/build/
+out/
+*.class
+*.log
+
+# Android
+local.properties
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+*.ap_
+*.dex
+
+# Assinatura do aplicativo
+*.jks
+*.keystore
+keystore.properties
+
+# Variáveis e credenciais
+.env
+.env.*
+!.env.example
+application-local.properties
+application-local.yml
+application-secret.properties
+
+# Bancos e backups locais
+*.db
+*.sqlite
+*.sqlite3
+*.dump
+*.backup
+
+# Temporários
+tmp/
+temp/
+*.tmp
+*.swp
