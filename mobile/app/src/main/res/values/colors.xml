@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
+
+    <!-- Cores principais da identidade visual -->
+    <color name="slate_blue">#1B2A30</color>
+    <color name="deep_teal">#305853</color>
+    <color name="golden_amber">#B06821</color>
+    <color name="brick_red">#9E2C21</color>
+    <color name="dark_mahogany">#511B18</color>
+
+    <!-- Cores de texto -->
+    <color name="text_primary">#F6F1EA</color>
+    <color name="text_secondary">#C9C4BC</color>
+    <color name="text_dark">#1B2A30</color>
+
+    <!-- Cores de interface -->
+    <color name="background_primary">#1B2A30</color>
+    <color name="background_secondary">#305853</color>
+    <color name="surface_card">#243B40</color>
+    <color name="surface_input">#29464A</color>
+
+    <!-- Estados -->
+    <color name="success">#4F8A65</color>
+    <color name="warning">#B06821</color>
+    <color name="error">#9E2C21</color>
+
+    <!-- Cores auxiliares -->
     <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+    <color name="transparent">#00000000</color>
+
 </resources>

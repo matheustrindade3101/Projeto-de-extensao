@@ -1,9 +1,41 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.TattooManager" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style
+        name="Base.Theme.TattooManager"
+        parent="Theme.Material3.DayNight.NoActionBar">
+
+        <!-- Cores principais -->
+        <item name="colorPrimary">@color/golden_amber</item>
+        <item name="colorOnPrimary">@color/text_dark</item>
+
+        <item name="colorSecondary">@color/brick_red</item>
+        <item name="colorOnSecondary">@color/text_primary</item>
+
+        <!-- Superfícies -->
+        <item name="colorSurface">@color/surface_card</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+
+        <item name="android:colorBackground">@color/background_primary</item>
+        <item name="colorOnBackground">@color/text_primary</item>
+
+        <!-- Erros -->
+        <item name="colorError">@color/error</item>
+        <item name="colorOnError">@color/text_primary</item>
+
+        <!-- Barras do sistema -->
+        <item name="android:statusBarColor">@color/background_primary</item>
+        <item name="android:navigationBarColor">@color/background_primary</item>
+        <item name="android:windowLightStatusBar">false</item>
+
+        <!-- Aparência geral -->
+        <item name="android:windowBackground">@color/background_primary</item>
+        <item name="android:fontFamily">sans</item>
+
     </style>
 
-    <style name="Theme.TattooManager" parent="Base.Theme.TattooManager" />
+    <style
+        name="Theme.TattooManager"
+        parent="Base.Theme.TattooManager" />
+
 </resources>
