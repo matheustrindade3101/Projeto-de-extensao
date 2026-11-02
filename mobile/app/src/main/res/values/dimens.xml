@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Margens das telas -->
+    <dimen name="screen_padding">24dp</dimen>
+    <dimen name="screen_padding_small">16dp</dimen>
+
+    <!-- Espaçamentos -->
+    <dimen name="spacing_extra_small">4dp</dimen>
+    <dimen name="spacing_small">8dp</dimen>
+    <dimen name="spacing_medium">12dp</dimen>
+    <dimen name="spacing_large">16dp</dimen>
+    <dimen name="spacing_extra_large">24dp</dimen>
+    <dimen name="spacing_section">32dp</dimen>
+
+    <!-- Tamanhos dos textos -->
+    <dimen name="text_size_caption">12sp</dimen>
+    <dimen name="text_size_body">16sp</dimen>
+    <dimen name="text_size_button">16sp</dimen>
+    <dimen name="text_size_subtitle">20sp</dimen>
+    <dimen name="text_size_title">28sp</dimen>
+    <dimen name="text_size_dashboard_value">36sp</dimen>
+
+    <!-- Componentes -->
+    <dimen name="button_height">54dp</dimen>
+    <dimen name="input_min_height">54dp</dimen>
+    <dimen name="icon_size">24dp</dimen>
+    <dimen name="avatar_size">48dp</dimen>
+
+    <!-- Cantos arredondados -->
+    <dimen name="radius_small">8dp</dimen>
+    <dimen name="radius_medium">12dp</dimen>
+    <dimen name="radius_large">18dp</dimen>
+
+    <!-- Elevação -->
+    <dimen name="card_elevation">2dp</dimen>
+
+</resources>

@@ -1,3 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">TattooManager</string>
+
+    <!-- Aplicativo -->
+    <string name="app_name">Tattoo Manager</string>
+
+    <!-- Dashboard -->
+    <string name="dashboard_title">Visão geral</string>
+    <string name="dashboard_subtitle">Organize seu estúdio e transforme tempo em arte.</string>
+
+    <!-- Indicadores -->
+    <string name="today_schedule">Agenda de hoje</string>
+    <string name="registered_clients">Clientes</string>
+    <string name="low_stock">Estoque baixo</string>
+    <string name="monthly_revenue">Faturamento do mês</string>
+
+    <!-- Valores temporários -->
+    <string name="value_today_schedule">5</string>
+    <string name="value_registered_clients">24</string>
+    <string name="value_low_stock">3</string>
+    <string name="value_monthly_revenue">R$ 1.250</string>
+
+    <!-- Próximo atendimento -->
+    <string name="next_appointment">Próximo atendimento</string>
+    <string name="appointment_time">10:00</string>
+    <string name="appointment_client">Lucas Silva</string>
+    <string name="appointment_service">Tatuagem - Braço</string>
+    <string name="appointment_status">2h • Confirmado</string>
+
+    <!-- Ações -->
+    <string name="view_full_schedule">Ver agenda completa</string>
+
+    <!-- Navegação -->
+    <string name="nav_home">Início</string>
+    <string name="nav_clients">Clientes</string>
+    <string name="nav_schedule">Agenda</string>
+    <string name="nav_inventory">Estoque</string>
+    <string name="nav_more">Mais</string>
+
 </resources>
