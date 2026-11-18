@@ -1,10 +1,263 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ClientesActivity">
+    android:background="@color/background_primary"
+    android:fillViewport="true">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/screen_padding">
+
+        <!-- Voltar -->
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonBack"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="0dp"
+            android:paddingStart="0dp"
+            android:paddingEnd="@dimen/spacing_medium"
+            android:text="@string/back"
+            android:textAllCaps="false"
+            android:textColor="@color/golden_amber"
+            android:textSize="@dimen/text_size_body" />
+
+        <!-- Cabeçalho -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:text="@string/clients_title"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/text_size_title"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_extra_small"
+            android:text="@string/clients_subtitle"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/text_size_body" />
+
+        <!-- Busca -->
+
+        <EditText
+            android:id="@+id/editSearchClient"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/input_min_height"
+            android:layout_marginTop="@dimen/spacing_extra_large"
+            android:autofillHints=""
+            android:background="@drawable/background_input"
+            android:hint="@string/clients_search_hint"
+            android:inputType="textPersonName"
+            android:maxLines="1"
+            android:paddingStart="@dimen/spacing_large"
+            android:paddingEnd="@dimen/spacing_large"
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_secondary"
+            android:textSize="@dimen/text_size_body" />
+
+        <!-- Novo cliente -->
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonNewClient"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:text="@string/new_client"
+            android:textAllCaps="false"
+            android:textColor="@color/text_dark"
+            android:textSize="@dimen/text_size_button"
+            android:textStyle="bold"
+            app:backgroundTint="@color/golden_amber"
+            app:cornerRadius="@dimen/radius_medium" />
+
+        <!-- Filtros -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonFilterAll"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="@dimen/spacing_extra_small"
+                android:layout_weight="1"
+                android:text="@string/filter_all"
+                android:textAllCaps="false"
+                android:textColor="@color/text_primary"
+                app:backgroundTint="@color/brick_red"
+                app:cornerRadius="@dimen/radius_large" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonFilterActive"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="@dimen/spacing_extra_small"
+                android:layout_marginEnd="@dimen/spacing_extra_small"
+                android:layout_weight="1"
+                android:text="@string/filter_active"
+                android:textAllCaps="false"
+                android:textColor="@color/text_primary"
+                app:backgroundTint="@color/deep_teal"
+                app:cornerRadius="@dimen/radius_large" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonFilterInactive"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="@dimen/spacing_extra_small"
+                android:layout_weight="1"
+                android:text="@string/filter_inactive"
+                android:textAllCaps="false"
+                android:textColor="@color/text_primary"
+                app:backgroundTint="@color/deep_teal"
+                app:cornerRadius="@dimen/radius_large" />
+
+        </LinearLayout>
+
+        <!-- A lista de clientes será inserida aqui -->
+
+        <LinearLayout
+    android:id="@+id/clientListContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/spacing_large"
+    android:orientation="vertical">
+
+    <!-- Lucas Silva -->
+
+    <LinearLayout
+        android:id="@+id/cardClientLucas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_card"
+        android:elevation="@dimen/card_elevation"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_large">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/client_lucas_name"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/text_size_body"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_extra_small"
+            android:text="@string/client_lucas_phone"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/text_size_caption" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:text="@string/client_lucas_sessions"
+            android:textColor="@color/golden_amber"
+            android:textSize="@dimen/text_size_caption"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- Mariana Alves -->
+
+    <LinearLayout
+        android:id="@+id/cardClientMariana"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:background="@drawable/background_card"
+        android:elevation="@dimen/card_elevation"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_large">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/client_mariana_name"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/text_size_body"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_extra_small"
+            android:text="@string/client_mariana_phone"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/text_size_caption" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:text="@string/client_mariana_sessions"
+            android:textColor="@color/golden_amber"
+            android:textSize="@dimen/text_size_caption"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- Carlos Ribeiro -->
+
+    <LinearLayout
+        android:id="@+id/cardClientCarlos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:layout_marginBottom="@dimen/spacing_extra_large"
+        android:background="@drawable/background_card"
+        android:elevation="@dimen/card_elevation"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_large">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/client_carlos_name"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/text_size_body"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_extra_small"
+            android:text="@string/client_carlos_phone"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/text_size_caption" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:text="@string/client_carlos_sessions"
+            android:textColor="@color/golden_amber"
+            android:textSize="@dimen/text_size_caption"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+    <!-- Fim do cartão de Carlos -->
+
+</LinearLayout>
+
+
+</LinearLayout>
+
+
+</ScrollView>
