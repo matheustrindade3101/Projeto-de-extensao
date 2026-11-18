@@ -37,4 +37,36 @@
     <string name="nav_inventory">Estoque</string>
     <string name="nav_more">Mais</string>
 
+    <!-- Tela de clientes -->
+    <string name="clients_title">Clientes</string>
+    <string name="clients_subtitle">Relacionamentos que viram arte.</string>
+    <string name="clients_search_hint">Buscar cliente</string>
+    <string name="new_client">Novo cliente</string>
+    <string name="back">Voltar</string>
+
+    <!-- Filtros de clientes -->
+    <string name="filter_all">Todos</string>
+    <string name="filter_active">Ativos</string>
+    <string name="filter_inactive">Inativos</string>
+
+    <!-- Clientes fictícios -->
+    <string name="client_lucas_name">Lucas Silva</string>
+    <string name="client_lucas_phone">(11) 98765-4321</string>
+    <string name="client_lucas_sessions">3 atendimentos</string>
+
+    <string name="client_mariana_name">Mariana Alves</string>
+    <string name="client_mariana_phone">(11) 91234-5678</string>
+    <string name="client_mariana_sessions">5 atendimentos</string>
+
+    <string name="client_carlos_name">Carlos Ribeiro</string>
+    <string name="client_carlos_phone">(11) 99876-5432</string>
+    <string name="client_carlos_sessions">2 atendimentos</string>
+
+    <!-- Estado vazio -->
+    <string name="clients_empty_title">Nenhum cliente encontrado</string>
+    <string name="clients_empty_message">Cadastre um cliente ou altere os filtros da busca.</string>
+    <string name="client_status_active">Ativo</string>
+    <string name="client_status_inactive">Inativo</string>
+    <string name="client_saved_success">Cliente cadastrado com sucesso!</string>
+
 </resources>

@@ -14,6 +14,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import br.com.tattoomanager.data.AppDatabase;
+import br.com.tattoomanager.data.Cliente;
+
 public class CadastroClienteActivity extends AppCompatActivity {
 
     // Campos do formulário
@@ -99,18 +102,29 @@ public class CadastroClienteActivity extends AppCompatActivity {
             valido = false;
         }
 
-        // Se todos os campos estiverem corretos
         if (valido) {
+            Cliente cliente = new Cliente(
+                    nome,
+                    telefone,
+                    email,
+                    nascimento,
+                    true
+            );
 
-            // Mostrar mensagem temporária
-            Toast.makeText(
-                this,
-                "Cliente cadastrado com sucesso!",
-                Toast.LENGTH_SHORT
-            ).show();
+            AppDatabase.databaseExecutor.execute(() -> {
+                AppDatabase.getInstance(this)
+                        .clienteDao()
+                        .inserir(cliente);
 
-            // Voltar para a tela anterior
-            finish();
+                runOnUiThread(() -> {
+                    Toast.makeText(
+                            this,
+                            R.string.client_saved_success,
+                            Toast.LENGTH_SHORT
+                    ).show();
+                    finish();
+                });
+            });
         }
     }
 
