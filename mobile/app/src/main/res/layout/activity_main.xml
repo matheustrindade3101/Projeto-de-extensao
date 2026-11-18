@@ -84,6 +84,7 @@
                 android:padding="@dimen/spacing_large">
 
                 <TextView
+                    android:id="@+id/textRegisteredClientsCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/value_registered_clients"

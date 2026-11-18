@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_primary"
-    android:fillViewport="true">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/screen_padding">
-
-        <!-- Voltar -->
+        android:paddingStart="@dimen/screen_padding"
+        android:paddingTop="@dimen/spacing_small"
+        android:paddingEnd="@dimen/screen_padding">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonBack"
@@ -27,8 +27,6 @@
             android:textAllCaps="false"
             android:textColor="@color/golden_amber"
             android:textSize="@dimen/text_size_body" />
-
-        <!-- Cabeçalho -->
 
         <TextView
             android:layout_width="wrap_content"
@@ -47,16 +45,14 @@
             android:textColor="@color/text_secondary"
             android:textSize="@dimen/text_size_body" />
 
-        <!-- Busca -->
-
         <EditText
             android:id="@+id/editSearchClient"
             android:layout_width="match_parent"
             android:layout_height="@dimen/input_min_height"
             android:layout_marginTop="@dimen/spacing_extra_large"
-            android:autofillHints=""
             android:background="@drawable/background_input"
             android:hint="@string/clients_search_hint"
+            android:importantForAutofill="no"
             android:inputType="textPersonName"
             android:maxLines="1"
             android:paddingStart="@dimen/spacing_large"
@@ -64,8 +60,6 @@
             android:textColor="@color/text_primary"
             android:textColorHint="@color/text_secondary"
             android:textSize="@dimen/text_size_body" />
-
-        <!-- Novo cliente -->
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonNewClient"
@@ -79,8 +73,6 @@
             android:textStyle="bold"
             app:backgroundTint="@color/golden_amber"
             app:cornerRadius="@dimen/radius_medium" />
-
-        <!-- Filtros -->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -127,137 +119,52 @@
 
         </LinearLayout>
 
-        <!-- A lista de clientes será inserida aqui -->
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerClients"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingStart="@dimen/screen_padding"
+            android:paddingTop="@dimen/spacing_large"
+            android:paddingEnd="@dimen/screen_padding"
+            android:paddingBottom="@dimen/spacing_extra_large" />
 
         <LinearLayout
-    android:id="@+id/clientListContainer"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/spacing_large"
-    android:orientation="vertical">
+            android:id="@+id/emptyClientsState"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/screen_padding"
+            android:visibility="gone">
 
-    <!-- Lucas Silva -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/clients_empty_title"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/text_size_subtitle"
+                android:textStyle="bold" />
 
-    <LinearLayout
-        android:id="@+id/cardClientLucas"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/background_card"
-        android:elevation="@dimen/card_elevation"
-        android:orientation="vertical"
-        android:padding="@dimen/spacing_large">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:gravity="center"
+                android:text="@string/clients_empty_message"
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/text_size_body" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/client_lucas_name"
-            android:textColor="@color/text_primary"
-            android:textSize="@dimen/text_size_body"
-            android:textStyle="bold" />
+        </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_extra_small"
-            android:text="@string/client_lucas_phone"
-            android:textColor="@color/text_secondary"
-            android:textSize="@dimen/text_size_caption" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_small"
-            android:text="@string/client_lucas_sessions"
-            android:textColor="@color/golden_amber"
-            android:textSize="@dimen/text_size_caption"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
-    <!-- Mariana Alves -->
-
-    <LinearLayout
-        android:id="@+id/cardClientMariana"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_medium"
-        android:background="@drawable/background_card"
-        android:elevation="@dimen/card_elevation"
-        android:orientation="vertical"
-        android:padding="@dimen/spacing_large">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/client_mariana_name"
-            android:textColor="@color/text_primary"
-            android:textSize="@dimen/text_size_body"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_extra_small"
-            android:text="@string/client_mariana_phone"
-            android:textColor="@color/text_secondary"
-            android:textSize="@dimen/text_size_caption" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_small"
-            android:text="@string/client_mariana_sessions"
-            android:textColor="@color/golden_amber"
-            android:textSize="@dimen/text_size_caption"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
-    <!-- Carlos Ribeiro -->
-
-    <LinearLayout
-        android:id="@+id/cardClientCarlos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_medium"
-        android:layout_marginBottom="@dimen/spacing_extra_large"
-        android:background="@drawable/background_card"
-        android:elevation="@dimen/card_elevation"
-        android:orientation="vertical"
-        android:padding="@dimen/spacing_large">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/client_carlos_name"
-            android:textColor="@color/text_primary"
-            android:textSize="@dimen/text_size_body"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_extra_small"
-            android:text="@string/client_carlos_phone"
-            android:textColor="@color/text_secondary"
-            android:textSize="@dimen/text_size_caption" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_small"
-            android:text="@string/client_carlos_sessions"
-            android:textColor="@color/golden_amber"
-            android:textSize="@dimen/text_size_caption"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-    <!-- Fim do cartão de Carlos -->
+    </FrameLayout>
 
 </LinearLayout>
-
-
-</LinearLayout>
-
-
-</ScrollView>

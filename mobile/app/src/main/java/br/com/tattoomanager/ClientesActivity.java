@@ -1,6 +1,7 @@
 package br.com.tattoomanager;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -9,108 +10,155 @@ import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.Locale;
+import com.google.android.material.button.MaterialButton;
+
+import java.util.List;
+
+import br.com.tattoomanager.data.AppDatabase;
+import br.com.tattoomanager.data.Cliente;
+import br.com.tattoomanager.data.ClienteDao;
 
 public class ClientesActivity extends AppCompatActivity {
+
+    private ClienteAdapter clientAdapter;
+    private View emptyState;
+    private MaterialButton filterAll;
+    private MaterialButton filterActive;
+    private MaterialButton filterInactive;
+    private ClienteDao clientDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_clientes);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (view, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            view.setPadding(
+                    systemBars.left,
+                    systemBars.top,
+                    systemBars.right,
+                    systemBars.bottom
+            );
             return insets;
         });
 
-        findViewById(R.id.buttonBack).setOnClickListener(v -> finish());
-        findViewById(R.id.buttonNewClient).setOnClickListener(v -> {
+        clientDao = AppDatabase.getInstance(this).clienteDao();
+        emptyState = findViewById(R.id.emptyClientsState);
+
+        configureClientList();
+        configureActions();
+        configureSearch();
+        configureFilters();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadClients();
+    }
+
+    private void configureClientList() {
+        RecyclerView clientList = findViewById(R.id.recyclerClients);
+        clientList.setLayoutManager(new LinearLayoutManager(this));
+
+        clientAdapter = new ClienteAdapter(visibleCount -> {
+            emptyState.setVisibility(
+                    visibleCount == 0 ? View.VISIBLE : View.GONE
+            );
+        });
+
+        clientList.setAdapter(clientAdapter);
+    }
+
+    private void configureActions() {
+        findViewById(R.id.buttonBack).setOnClickListener(view -> finish());
+
+        findViewById(R.id.buttonNewClient).setOnClickListener(view -> {
             Intent intent = new Intent(
                     ClientesActivity.this,
                     CadastroClienteActivity.class
             );
             startActivity(intent);
         });
+    }
 
-        EditText editSearchClient = findViewById(R.id.editSearchClient);
+    private void configureSearch() {
+        EditText searchInput = findViewById(R.id.editSearchClient);
 
-        editSearchClient.addTextChangedListener(new TextWatcher() {
+        searchInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(
-                CharSequence text,
-                int start,
-                int count,
-                int after
+                    CharSequence text,
+                    int start,
+                    int count,
+                    int after
             ) {
-                // Nenhuma ação necessária antes da alteração.
+                // Nenhuma ação necessária.
             }
 
             @Override
             public void onTextChanged(
-                CharSequence text,
-                int start,
-                int before,
-                int count
+                    CharSequence text,
+                    int start,
+                    int before,
+                    int count
             ) {
-                filterClients(text.toString());
+                clientAdapter.setSearchQuery(text.toString());
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
-                // Nenhuma ação necessária depois da alteração.
+                // Nenhuma ação necessária.
             }
         });
     }
 
-    private void filterClients(String query) {
-        String searchTerm = query
-                .trim()
-                .toLowerCase(Locale.ROOT);
+    private void configureFilters() {
+        filterAll = findViewById(R.id.buttonFilterAll);
+        filterActive = findViewById(R.id.buttonFilterActive);
+        filterInactive = findViewById(R.id.buttonFilterInactive);
 
-        updateClientVisibility(
-                R.id.cardClientLucas,
-                getString(R.string.client_lucas_name),
-                getString(R.string.client_lucas_phone),
-                searchTerm
-        );
+        filterAll.setOnClickListener(view -> {
+            clientAdapter.setActiveFilter(null);
+            selectFilter(filterAll);
+        });
 
-        updateClientVisibility(
-                R.id.cardClientMariana,
-                getString(R.string.client_mariana_name),
-                getString(R.string.client_mariana_phone),
-                searchTerm
-        );
+        filterActive.setOnClickListener(view -> {
+            clientAdapter.setActiveFilter(true);
+            selectFilter(filterActive);
+        });
 
-        updateClientVisibility(
-                R.id.cardClientCarlos,
-                getString(R.string.client_carlos_name),
-                getString(R.string.client_carlos_phone),
-                searchTerm
-        );
+        filterInactive.setOnClickListener(view -> {
+            clientAdapter.setActiveFilter(false);
+            selectFilter(filterInactive);
+        });
+
+        selectFilter(filterAll);
     }
 
-    private void updateClientVisibility(
-            int cardId,
-            String clientName,
-            String clientPhone,
-            String searchTerm
-    ) {
-        View clientCard = findViewById(cardId);
+    private void selectFilter(MaterialButton selectedButton) {
+        int selectedColor = ContextCompat.getColor(this, R.color.brick_red);
+        int defaultColor = ContextCompat.getColor(this, R.color.deep_teal);
 
-        String searchableContent = (
-                clientName + " " + clientPhone
-        ).toLowerCase(Locale.ROOT);
+        filterAll.setBackgroundTintList(ColorStateList.valueOf(defaultColor));
+        filterActive.setBackgroundTintList(ColorStateList.valueOf(defaultColor));
+        filterInactive.setBackgroundTintList(ColorStateList.valueOf(defaultColor));
+        selectedButton.setBackgroundTintList(ColorStateList.valueOf(selectedColor));
+    }
 
-        boolean matchesSearch = searchTerm.isEmpty()
-                || searchableContent.contains(searchTerm);
-
-        clientCard.setVisibility(
-                matchesSearch ? View.VISIBLE : View.GONE
-        );
+    private void loadClients() {
+        AppDatabase.databaseExecutor.execute(() -> {
+            List<Cliente> clients = clientDao.listarTodos();
+            runOnUiThread(() -> clientAdapter.submitList(clients));
+        });
     }
 }

@@ -65,5 +65,8 @@
     <!-- Estado vazio -->
     <string name="clients_empty_title">Nenhum cliente encontrado</string>
     <string name="clients_empty_message">Cadastre um cliente ou altere os filtros da busca.</string>
+    <string name="client_status_active">Ativo</string>
+    <string name="client_status_inactive">Inativo</string>
+    <string name="client_saved_success">Cliente cadastrado com sucesso!</string>
 
 </resources>
